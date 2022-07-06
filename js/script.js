@@ -28,22 +28,24 @@
 // # Consigli del giorno:
 //  Ragioniamo tanto sulla definizione dell'oggetto, se sbagliamo quello tutto diventa più difficile!
 
-// recupero elementi
+
+
 
 // creo array
 
 const feed = [
-    { name: 'Pinco Pallino', profilePicture: '../img/pinco-pallino.jpg', date: '07/06/2022', text: 'Non contare ogni giorno che passa per ciò che raccogli, ma contalo per ciò che semini.', image: 'https://unsplash.it/300/300?image=115', likes: 75 },
-    { name: 'Paperon De Paperoni', profilePicture: '', date: '08/06/2022', text: "L'idealismo è la capacità di vedere le persone come potrebbero essere se non fossero come sono.', image: 'https://unsplash.it/300/300?image=162", likes: 96 },
-    { name: 'Leonardo Da Vinci', profilePicture: '../img/leonardo-da-vinci.jpg', date: '09/06/2022', text: "Può essere artista solo colui che ha una intuizione dell'infinito.", image: 'https://unsplash.it/300/300?image=91', likes: 142 },
-    { name: 'Hernest Hemingway', profilePicture: '../img/ernest-hemingway.jpg', date: '10/06/2022', text: 'Bisognerebbe imparare dal mare a improvvisare e lasciarsi andare e dal cielo a non avere limiti e confini.', image: 'https://unsplash.it/300/300?image=287', likes: 44 },
+    { id: 1, name: 'Pinco Pallino', profilePicture: '../img/pinco-pallino.jpg', date: '07/06/2022', text: 'Non contare ogni giorno che passa per ciò che raccogli, ma contalo per ciò che semini.', image: 'https://unsplash.it/300/300?image=115', likes: 75 },
+    { id: 2, name: 'Paperon De Paperoni', profilePicture: '', date: '08/06/2022', text: "L'idealismo è la capacità di vedere le persone come potrebbero essere se non fossero come sono.", image: 'https://unsplash.it/300/300?image=162', likes: 96 },
+    { id: 3, name: 'Leonardo Da Vinci', profilePicture: '../img/leonardo-da-vinci.jpg', date: '09/06/2022', text: "Può essere artista solo colui che ha una intuizione dell'infinito.", image: 'https://unsplash.it/300/300?image=91', likes: 142 },
+    { id: 4, name: 'Hernest Hemingway', profilePicture: '../img/ernest-hemingway.jpg', date: '10/06/2022', text: 'Bisognerebbe imparare dal mare a improvvisare e lasciarsi andare e dal cielo a non avere limiti e confini.', image: 'https://unsplash.it/300/300?image=287', likes: 44 },
 ]
 
+// funzioni
 const renderPosts = (arr) => {
 
     const createPost = (posts) => {
 
-        const { name, profilePicture, date, text, image, likes } = posts;
+        const { id, name, profilePicture, date, text, image, likes } = posts;
 
         const content =
             `<div class="post">
@@ -67,7 +69,7 @@ const renderPosts = (arr) => {
                 <div class="post__footer">
                     <div class="likes js-likes">
                         <div class="likes__cta">
-                            <a class="like-button js-like-button" href="#" data-postid="1">
+                            <a class="like-button js-like-button" href="#${id}" data-postid="${id}">
                                 <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                                 <span class="like-button__label">Mi Piace</span>
                             </a>
@@ -80,7 +82,7 @@ const renderPosts = (arr) => {
         return content;
     }
 
-    const postsList = document.getElementById('container');
+    const postsList = document.querySelector('.posts-list');
 
     let post = '';
     for (let i = 0; i < feed.length; i++) {
@@ -93,4 +95,23 @@ const renderPosts = (arr) => {
 
 }
 
+
+// svolgimento
 renderPosts(feed);
+
+const likeButtons = document.querySelectorAll('.js-like-button');
+
+for (const likeButton of likeButtons) {
+
+    likeButton.addEventListener('click', function () {
+
+        this.classList.add('like-button--liked');
+
+        const likeCounters = document.querySelectorAll('.js-likes-counter');
+
+        for (const likeCounter of likeCounters) {
+
+            likeCounter.innerText += + 1;
+        }
+    });
+}
