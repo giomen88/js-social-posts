@@ -29,3 +29,12 @@
 //  Ragioniamo tanto sulla definizione dell'oggetto, se sbagliamo quello tutto diventa più difficile!
 
 
+// creo array
+
+const feed = [
+    { name: 'Pinco Pallino', image: 'https://www.litalianovero.it/wp/wp-content/uploads/2019/11/pinco-pallino-730x730.jpg', date: 07 / 06 / 2022, text: 'Non contare ogni giorno che passa per ciò che raccogli, ma contalo per ciò che semini.', image: 'https://unsplash.it/300/300?image=115', likes: 75 },
+    { name: 'Paperon De Paperoni', image: 'https://static.wikia.nocookie.net/khwita/images/f/fd/Paperon_de_Paperoni_KH3.png/revision/latest?cb=20190119091646&path-prefix=it', date: 08 / 06 / 2022, text: "L'idealismo è la capacità di vedere le persone come potrebbero essere se non fossero come sono.', image: 'https://unsplash.it/300/300?image=162", likes: 96 },
+    { name: 'Leonardo Da Vinci', image: 'http://www.businesspeople.it/var/ezwebin_site/storage/images/people/protagonisti/leonardo-da-vinci-genio-dedito-lavoro-110092/2264702-1-ita-IT/Leonardo-Da-Vinci-genio-dedito-lavoro_slider_home.jpg', date: 09 / 06 / 2022, text: "Può essere artista solo colui che ha una intuizione dell'infinito.", image: 'https://unsplash.it/300/300?image=91', likes: 142 },
+    { name: 'Hernest Hemingway', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ernest_Hemingway_Writing_at_Campsite_in_Kenya_-_NARA_-_192655.jpg/800px-Ernest_Hemingway_Writing_at_Campsite_in_Kenya_-_NARA_-_192655.jpg', date: 10 / 06 / 2022, text: 'Bisognerebbe imparare dal mare a improvvisare e lasciarsi andare e dal cielo a non avere limiti e confini.', image: 'https://unsplash.it/300/300?image=287', likes: 44 },
+]
+
