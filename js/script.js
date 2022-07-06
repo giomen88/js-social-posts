@@ -33,10 +33,10 @@
 // creo array
 
 const feed = [
-    { name: 'Pinco Pallino', profilePicture: '../img/pinco-pallino.jpg', date: 07 / 06 / 2022, text: 'Non contare ogni giorno che passa per ciò che raccogli, ma contalo per ciò che semini.', image: 'https://unsplash.it/300/300?image=115', likes: 75 },
-    { name: 'Paperon De Paperoni', profilePicture: '', date: 08 / 06 / 2022, text: "L'idealismo è la capacità di vedere le persone come potrebbero essere se non fossero come sono.', image: 'https://unsplash.it/300/300?image=162", likes: 96 },
-    { name: 'Leonardo Da Vinci', profilePicture: '../img/leonardo-da-vinci.jpg', date: 09 / 06 / 2022, text: "Può essere artista solo colui che ha una intuizione dell'infinito.", image: 'https://unsplash.it/300/300?image=91', likes: 142 },
-    { name: 'Hernest Hemingway', profilePicture: '../img/ernest-hemingway.jpg', date: 10 / 06 / 2022, text: 'Bisognerebbe imparare dal mare a improvvisare e lasciarsi andare e dal cielo a non avere limiti e confini.', image: 'https://unsplash.it/300/300?image=287', likes: 44 },
+    { name: 'Pinco Pallino', profilePicture: '../img/pinco-pallino.jpg', date: '07/06/2022', text: 'Non contare ogni giorno che passa per ciò che raccogli, ma contalo per ciò che semini.', image: 'https://unsplash.it/300/300?image=115', likes: 75 },
+    { name: 'Paperon De Paperoni', profilePicture: '', date: '08/06/2022', text: "L'idealismo è la capacità di vedere le persone come potrebbero essere se non fossero come sono.', image: 'https://unsplash.it/300/300?image=162", likes: 96 },
+    { name: 'Leonardo Da Vinci', profilePicture: '../img/leonardo-da-vinci.jpg', date: '09/06/2022', text: "Può essere artista solo colui che ha una intuizione dell'infinito.", image: 'https://unsplash.it/300/300?image=91', likes: 142 },
+    { name: 'Hernest Hemingway', profilePicture: '../img/ernest-hemingway.jpg', date: '10/06/2022', text: 'Bisognerebbe imparare dal mare a improvvisare e lasciarsi andare e dal cielo a non avere limiti e confini.', image: 'https://unsplash.it/300/300?image=287', likes: 44 },
 ]
 
 const renderPosts = (arr) => {
@@ -45,7 +45,7 @@ const renderPosts = (arr) => {
 
         const { name, profilePicture, date, text, image, likes } = posts;
 
-        const post =
+        const content =
             `<div class="post">
                 <div class="post__header">
                      <div class="post-meta">
@@ -77,10 +77,10 @@ const renderPosts = (arr) => {
                 </div>
             </div>`;
 
-        return post;
+        return content;
     }
 
-    const postsList = document.querySelector('posts-list');
+    const postsList = document.getElementById('container');
 
     let post = '';
     for (let i = 0; i < feed.length; i++) {
