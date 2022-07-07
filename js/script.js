@@ -34,10 +34,10 @@
 // creo array
 
 const feed = [
-    { id: 1, name: 'Pinco Pallino', profilePicture: '../img/pinco-pallino.jpg', date: '07/06/2022', text: 'Non contare ogni giorno che passa per ciò che raccogli, ma contalo per ciò che semini.', image: 'https://unsplash.it/300/300?image=115', likes: 75 },
-    { id: 2, name: 'Paperon De Paperoni', profilePicture: '', date: '08/06/2022', text: "L'idealismo è la capacità di vedere le persone come potrebbero essere se non fossero come sono.", image: 'https://unsplash.it/300/300?image=162', likes: 96 },
-    { id: 3, name: 'Leonardo Da Vinci', profilePicture: '../img/leonardo-da-vinci.jpg', date: '09/06/2022', text: "Può essere artista solo colui che ha una intuizione dell'infinito.", image: 'https://unsplash.it/300/300?image=91', likes: 142 },
-    { id: 4, name: 'Hernest Hemingway', profilePicture: '../img/ernest-hemingway.jpg', date: '10/06/2022', text: 'Bisognerebbe imparare dal mare a improvvisare e lasciarsi andare e dal cielo a non avere limiti e confini.', image: 'https://unsplash.it/300/300?image=287', likes: 44 },
+    { id: 1, name: 'Pinco Pallino', picture: '../img/pinco-pallino.jpg', date: '07/06/2022', text: 'Non contare ogni giorno che passa per ciò che raccogli, ma contalo per ciò che semini.', image: 'https://unsplash.it/300/300?image=523', likes: 75 },
+    { id: 2, name: 'Paperon De Paperoni', picture: '', date: '08/06/2022', text: "L'idealismo è la capacità di vedere le persone come potrebbero essere se non fossero come sono.", image: 'https://unsplash.it/300/300?image=415', likes: 96 },
+    { id: 3, name: 'Leonardo Da Vinci', picture: '../img/leonardo-da-vinci.jpg', date: '09/06/2022', text: "Può essere artista solo colui che ha una intuizione dell'infinito.", image: 'https://unsplash.it/300/300?image=287', likes: 142 },
+    { id: 4, name: 'Hernest Hemingway', picture: '../img/ernest-hemingway.jpg', date: '10/06/2022', text: 'Bisognerebbe imparare dal mare a improvvisare e lasciarsi andare e dal cielo a non avere limiti e confini.', image: 'https://unsplash.it/300/300?image=12', likes: 44 },
 ]
 
 // funzioni
@@ -45,14 +45,14 @@ const renderPosts = (arr) => {
 
     const createPost = (posts) => {
 
-        const { id, name, profilePicture, date, text, image, likes } = posts;
+        const { id, name, picture, date, text, image, likes } = posts;
 
         const content =
             `<div class="post">
                 <div class="post__header">
                      <div class="post-meta">
                         <div class="post-meta__icon">
-                            <img class="profile-pic" src="${profilePicture}" alt="${name}" />
+                            <img class="profile-pic" src="${picture}" alt="${name}" />
                          </div>
                         <div class="post-meta__data">
                             <div class="post-meta__author">${name}</div>
@@ -74,7 +74,7 @@ const renderPosts = (arr) => {
                                 <span class="like-button__label">Mi Piace</span>
                             </a>
                         </div>
-                        <div class="likes__counter">Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone</div>
+                        <div class="likes__counter">Piace a <b id="like-counter-${id}" class="js-likes-counter">${likes}</b> persone</div>
                     </div>
                 </div>
             </div>`;
@@ -103,15 +103,16 @@ const likeButtons = document.querySelectorAll('.js-like-button');
 
 for (const likeButton of likeButtons) {
 
-    likeButton.addEventListener('click', function () {
+    likeButton.addEventListener('click', () => {
 
-        this.classList.add('like-button--liked');
+        likeButton.classList.toggle('like-button--liked');
 
-        const likeCounters = document.querySelectorAll('.js-likes-counter');
+        const postId = likeButton.dataset.id;
 
-        for (const likeCounter of likeCounters) {
+        const likeCounter = document.getElementById(`like-counter-${postId}`);
 
-            likeCounter.innerText += + 1;
-        }
-    });
+        let likes = parseInt(likeCounter.innerText);
+
+        likeCounter.innerText = ++likes;
+    })
 }
