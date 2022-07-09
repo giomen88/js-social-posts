@@ -105,7 +105,9 @@ for (const likeButton of likeButtons) {
 
     likeButton.addEventListener('click', () => {
 
-        likeButton.classList.toggle('like-button--liked');
+        if (likeButton.classList.contains('like-button--liked')) return;
+
+        likeButton.classList.add('like-button--liked');
 
         const postId = likeButton.dataset.postid;
 
